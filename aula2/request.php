@@ -15,17 +15,14 @@ class Request
 	$this->protocol=$protocol;	
 	$this->ip=$ip;	
 	$this->resource=$resource;	
-	$this->paramenters=$method;	
+	$this->paramenters=$parameters;
   } 
 
-  public function toString(){
+  public function __toString(){
 	$request = $this->protocol."://".$this->ip."/".$this->resource."/";
-	foreach($this->parameters as $key => $param){
-	$request .= $key."=".$param;
-		if($param != end($this->parameters))
- 			$request .= "&amp";
+	foreach($parameters as $param){
+	return $request = $param;
 	}
-	return utf8_encode($request);
   }
   public function getmethod($method){
       return $this->method=$method;
@@ -59,5 +56,4 @@ class Request
   }
 }
 
-$request = new URLRequest("http","127.0.0.1","resource",array("parameters1"=>123,"parameters2"=>789),"POST");
-echo $request->toString();
+
